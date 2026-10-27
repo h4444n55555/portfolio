@@ -12,6 +12,8 @@ type AboutEntry = {
   link?: { label: string; href: string };
   image?: { src: string; alt: string };
   skills?: Skill[];
+  /** Label / value rows shown as a small spec table above the body. */
+  facts?: { label: string; value: string }[];
 };
 
 /** A skill is shown as its logo; the few without one are just named. */
@@ -26,13 +28,9 @@ const SKILLS: Skill[] = [
   { name: "FastAPI", icon: "fastapi" },
   { name: "React", icon: "react" },
   { name: "Next.js", icon: "nextjs" },
-  { name: "Vite", icon: "vitejs" },
   { name: "TypeScript", icon: "typescript" },
   { name: "Tailwind", icon: "tailwindcss" },
-  { name: "Express", icon: "express" },
   { name: "MongoDB", icon: "mongodb" },
-  { name: "Docker", icon: "docker" },
-  { name: "Kubernetes", icon: "kubernetes" },
   { name: "Git", icon: "git" },
   { name: "Claude Code", icon: "claude" },
 ];
@@ -45,10 +43,6 @@ const ELEMENTS: TreeViewElement[] = [
     type: "folder",
     name: "about",
     children: [
-      {
-        id: "readme",
-        name: "README.md",
-      },
       {
         id: "education",
         type: "folder",
@@ -77,14 +71,17 @@ const ELEMENTS: TreeViewElement[] = [
         id: "certifications",
         type: "folder",
         name: "certifications",
-        children: [{ id: "cert-ibm", name: "ibm-eda.md" }],
+        children: [
+          { id: "cert-intern", name: "iit-ropar-internship.md" },
+          { id: "cert-ibm", name: "ibm-eda.md" },
+        ],
       },
       {
-        id: "interests",
+        id: "personal",
         type: "folder",
-        name: "interests",
+        name: "personal",
         children: [
-          { id: "interests-file", name: "beyond-work.md" },
+          { id: "interests-file", name: "about-me.md" },
         ],
       },
     ],
@@ -92,16 +89,21 @@ const ELEMENTS: TreeViewElement[] = [
 ];
 
 const ENTRIES: Record<string, AboutEntry> = {
-  readme: {
-    id: "readme",
-    heading: "About me",
-    body: "I'm a B.Tech student in AI and Data Engineering at IIT Ropar. I build, experiment and research around AI and machine learning.\n\nMy research is in machine learning and NLP, from sentence embeddings to medical-image segmentation, and I'm working on health pre-screening from wearable-device signals.\n\nAround it I build the software: websites for a research lab and two startups, and full-stack ML systems for course projects. I'm co-founder of Kshetri Industries and frontend lead at Nimbus MD.",
-  },
   "edu-degree": {
     id: "edu-degree",
     heading: "B.Tech in AI and Data Engineering, IIT Ropar",
     meta: "2024 – 2028",
-    body: "A four-year B.Tech programme at the Indian Institute of Technology Ropar, in Punjab.\n\nCoursework so far spans machine learning, AI systems programming, linear algebra, data structures and algorithms, the foundations of computer systems, and optimization methods.\n\nMany of my projects started as course work, including a vision-language navigation agent, a RISC-V assembler, a Whisper hallucination study and Aura Screen.",
+    facts: [
+      { label: "Degree", value: "Bachelor of Technology (B.Tech)" },
+      { label: "Major", value: "Artificial Intelligence and Data Engineering" },
+      { label: "Institute", value: "Indian Institute of Technology Ropar, Punjab" },
+      { label: "Duration", value: "2024 – 2028" },
+      {
+        label: "Coursework",
+        value:
+          "Machine Learning, Artificial Intelligence, Linear Algebra, Optimization Techniques, Databases, Data Structures and Algorithms, Signals and Systems, Foundation of Computer Systems, Calculus, Differential Equations, HCI and Visualization, Ethics in AI, Deep Learning, Big Data Analytics, MLOps Lab",
+      },
+    ],
   },
   "exp-one": {
     id: "exp-one",
@@ -126,6 +128,13 @@ const ENTRIES: Record<string, AboutEntry> = {
     heading: "Skills",
     skills: SKILLS,
   },
+  "cert-intern": {
+    id: "cert-intern",
+    heading: "Internship Certificate, IIT Ropar",
+    meta: "Dept. of Computer Science and Engineering · June 1 – July 16, 2026",
+    body: "Sentence Representation Learning using Contrastive Loss Function, under Dr. Loitongbam Gyanendro Singh.",
+    image: { src: "/certs/iit-ropar-internship.jpg", alt: "IIT Ropar internship certificate: Sentence Representation Learning using Contrastive Loss Function" },
+  },
   "cert-ibm": {
     id: "cert-ibm",
     heading: "Exploratory Data Analysis for Machine Learning",
@@ -135,12 +144,12 @@ const ENTRIES: Record<string, AboutEntry> = {
   },
   "interests-file": {
     id: "interests-file",
-    heading: "Beyond work",
-    body: "I lift weights. I'm an active member of the campus weightlifting club, and I helped organize the IIT Ropar weightlifting team's event at Aarohan '26.\n\nI also like digging into odd datasets for fun. I once researched rare aesthetic patterns and the market price dynamics of CS2 digital assets.",
+    heading: "Hi, I'm Hans",
+    body: "I'm from Shillong, Meghalaya, and I'm now studying at IIT Ropar, where I'm an active member of the campus weightlifting club at IIT Ropar. Lifting is the part of the day I don't negotiate with.\n\nI enjoy building PCs, picking the parts and putting the whole thing together. I also trade CS2 skins now and then, and I like seeing how that market moves.\n\nOutside that I like travelling, good food, and frontend design, which is as much a hobby as a job for me.",
   },
 };
 
-const DEFAULT_ID = "readme";
+const DEFAULT_ID = "edu-degree";
 
 export const AboutSection: React.FC = () => {
   const [selectedId, setSelectedId] = useState(DEFAULT_ID);
@@ -153,7 +162,7 @@ export const AboutSection: React.FC = () => {
         <Tree
           elements={ELEMENTS}
           initialSelectedId={DEFAULT_ID}
-          initialExpandedItems={["about", "education", "experience", "skills", "certifications", "interests"]}
+          initialExpandedItems={["about", "education", "experience", "skills", "certifications", "personal"]}
           onSelect={(id) => {
             if (ENTRIES[id]) setSelectedId(id);
           }}
@@ -170,6 +179,21 @@ export const AboutSection: React.FC = () => {
         </h3>
         {entry.meta && (
           <p className="mt-1 font-mono text-xs text-muted-foreground">{entry.meta}</p>
+        )}
+        {entry.facts && (
+          <dl className="mt-6 border-t border-dashed border-border">
+            {entry.facts.map((fact) => (
+              <div
+                key={fact.label}
+                className="grid grid-cols-[6.5rem_minmax(0,1fr)] gap-4 border-b border-dashed border-border py-3"
+              >
+                <dt className="font-mono text-xs uppercase tracking-wide text-muted-foreground">
+                  {fact.label}
+                </dt>
+                <dd className="text-[16px] leading-snug text-foreground">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
         )}
         {entry.body?.split("\n\n").map((paragraph, index) => (
           <p key={index} className="mt-4">

@@ -16,6 +16,7 @@ const CURRENT: ProjectEntry[] = [
   {
     id: "wearable-prescreening",
     title: "Wearable Medical Pre-screening",
+    listTitle: "Wearable Pre-screening",
     tagline: "Flagging who may need a check-up from consumer-device signals",
     period: "2026–present",
     problem:
@@ -29,6 +30,7 @@ const PROJECTS: ProjectEntry[] = [
   {
     id: "sentence-embeddings",
     title: "Multilingual Sentence Embeddings",
+    listTitle: "Multilingual Embeddings",
     tagline: "Evaluating embedding models across languages",
     period: "2026–present",
     problem:
@@ -46,11 +48,11 @@ export const ResearchSection: React.FC = () => {
   useReportSelection("research", selectedId !== null);
 
   return (
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-14">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
       {/* Left: project list */}
       <nav
         aria-label="Research projects"
-        className="md:border-r md:border-border md:pr-10"
+        className="lg:border-r lg:border-border lg:pr-10"
       >
         <ul className="flex flex-col">
           {PROJECTS.map((project) => (

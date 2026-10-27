@@ -30,7 +30,7 @@ const COURSE_PROJECTS: ProjectEntry[] = [
     id: "whispr-hallucinations",
     figure: SubspaceRig,
     title: "Reducing Hallucinated Transcripts in Whisper via Hallucination Space Projection",
-    listTitle: "Reducing Hallucinations in Whisper",
+    listTitle: "Whisper Hallucinations",
     tagline: "Training-free fix for Whisper inventing text on non-speech audio",
     period: "2026",
     problem:
@@ -91,8 +91,22 @@ const COURSE_PROJECTS: ProjectEntry[] = [
     ],
   },
   {
+    id: "petct-viewer",
+    title: "PET/CT Viewer",
+    tagline: "Local web viewer for PET/CT studies, with robustness views",
+    period: "2026",
+    problem:
+      "PET/CT studies come as NIfTI volumes, and checking a segmentation model's behaviour on them usually means juggling separate scripts and viewers.\n\nI wanted one tool to browse the scans, see the lesion masks and see how they change when the input gets worse.",
+    approach:
+      "A web viewer that runs entirely on your own computer, so no patient data is uploaded. It is built for the public autoPET dataset and also reads any PET and CT pair with an optional lesion mask.\n\nIt has axial, coronal and sagittal views, a PET maximum-intensity projection, PET/CT fusion, a lesion-mask overlay, SUV and HU values on hover, a lesion list and dataset overview charts.\n\nIt also applies the robustness perturbations from my segmentation study (lower resolution, added noise and the PET channel removed), so the effect on a scan can be compared side by side.\n\nIt is a Python backend with a single-page HTML front end, and decoded studies are cached so reopening one is instant.",
+    links: [
+      { label: "Code", href: "https://github.com/h4444n55555/petct-viewer" },
+    ],
+  },
+  {
     id: "mmac-dashboards",
     title: "Multimodal Affective Computing Dashboards",
+    listTitle: "Affective Computing Dashboards",
     tagline: "Interactive study hub linking physiological signals to emotion",
     period: "2026",
     problem:
@@ -127,11 +141,11 @@ export const ProjectsSection: React.FC = () => {
     setSelectedId((current) => (current === id ? null : id));
 
   return (
-    <div className="grid grid-cols-1 gap-10 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-14">
+    <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
       {/* Left: grouped project list */}
       <nav
         aria-label="Other projects"
-        className="md:border-r md:border-border md:pr-10"
+        className="lg:border-r lg:border-border lg:pr-10"
       >
         <ul className="flex flex-col">
           {/* Websites — collapsible group, header only toggles visibility */}
@@ -168,7 +182,7 @@ export const ProjectsSection: React.FC = () => {
                         type="button"
                         onClick={() => toggleSelect(site.id)}
                         aria-current={site.id === selectedId}
-                        style={{ paddingLeft: "1.25rem" }}
+                        style={{ paddingLeft: "2.25rem" }}
                         className={cn(
                           "flex w-full items-baseline gap-4 border-t border-dashed border-border px-2 py-3 text-left transition-colors",
                           site.id === selectedId
@@ -176,7 +190,7 @@ export const ProjectsSection: React.FC = () => {
                             : "hover:bg-tint-hover",
                         )}
                       >
-                        <span className="shrink-0 font-mono text-xs font-semibold tracking-wide uppercase">
+                        <span className="min-w-0 truncate font-mono text-xs font-semibold tracking-wide uppercase">
                           {site.title}
                         </span>
                         <span className="min-w-0 flex-1 truncate font-mono text-xs text-muted-foreground">
