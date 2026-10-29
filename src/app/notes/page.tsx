@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Write-up · Hans Nongmaithem",
+  title: "Research Notes · Hans Nongmaithem",
   description:
     "The detail behind my projects and experience: the small decisions, dead ends and workarounds, and how the projects connect.",
 };
@@ -11,14 +11,14 @@ const H3 = "mt-8 font-mono text-xs font-semibold uppercase tracking-wide text-bl
 const P = "mt-4 leading-relaxed text-black/80";
 const CODE = "rounded bg-black/5 px-1 py-0.5 font-mono text-[0.85em]";
 
-export default function WriteupPage() {
+export default function NotesPage() {
   return (
     <main className="mx-auto w-full max-w-2xl px-6 py-16 text-black">
       <a href="/" className="font-mono text-xs uppercase tracking-wide text-black/50">
         ← Back
       </a>
 
-      <h1 className="mt-6 font-serif text-4xl font-semibold">Write-up</h1>
+      <h1 className="mt-6 font-serif text-4xl font-semibold">Research notes</h1>
       <p className={P}>
         The portfolio shows what I built. This page is the detail behind it: the smaller
         decisions, the dead ends and workarounds that never make it into a project

@@ -167,11 +167,11 @@ export const SiteDock: React.FC = () => {
                     </a>
                   ))}
                   <a
-                    href="/writeup"
+                    href="/notes"
                     onClick={() => setOpen(false)}
                     className="-mx-2 rounded-md px-2 py-1.5 font-mono text-xs uppercase tracking-wide transition-colors hover:bg-white/40"
                   >
-                    Write-up
+                    Research notes
                   </a>
                 </nav>
 
