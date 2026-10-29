@@ -51,7 +51,7 @@ const socials = [
 const ORB = 72;
 const RING_BOX = 128;
 const CARD_W = 288;
-const CARD_H = 340;
+const CARD_H = 384;
 const EASE = [0.2, 0.8, 0.3, 1] as const;
 
 export const SiteDock: React.FC = () => {
@@ -184,6 +184,13 @@ export const SiteDock: React.FC = () => {
                     </a>
                   ))}
                 </div>
+
+                <a
+                  href="/writeup"
+                  className="-mx-2 mt-2 block rounded-md px-2 py-1.5 font-mono text-xs uppercase tracking-wide transition-colors hover:bg-white/40"
+                >
+                  Write-up ↗
+                </a>
               </motion.div>
             )}
           </LiquidGlass>
