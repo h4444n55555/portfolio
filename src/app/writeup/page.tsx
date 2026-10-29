@@ -35,7 +35,11 @@ export default function WriteupPage() {
       <section id="multimodal">
         <h2 className={H2}>Multimodal research</h2>
         <p className={P}>
-          This is the research thread that three projects grew out of: the multimodal
+          This work is part of the Multimodal Affective Computing (MMAC) study at the School
+          of AI and Data Engineering, IIT Ropar, a group study on how physiological signals
+          relate to emotional and cognitive state. Within it I took on the data-collection
+          side and built that part myself: choosing the sensors, getting the data out of
+          them, and building the dashboards. Three projects grew out of it: the multimodal
           dashboard, the medical pre-screening work, and Aura Screen. It started with data
           collection, so that&apos;s where this write-up starts too.
         </p>
