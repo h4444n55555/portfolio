@@ -166,6 +166,13 @@ export const SiteDock: React.FC = () => {
                       {item.label}
                     </a>
                   ))}
+                  <a
+                    href="/writeup"
+                    onClick={() => setOpen(false)}
+                    className="-mx-2 rounded-md px-2 py-1.5 font-mono text-xs uppercase tracking-wide transition-colors hover:bg-white/40"
+                  >
+                    Write-up
+                  </a>
                 </nav>
 
                 <div className="mt-5 flex items-center gap-1 border-t border-black/10 pt-4">
@@ -184,13 +191,6 @@ export const SiteDock: React.FC = () => {
                     </a>
                   ))}
                 </div>
-
-                <a
-                  href="/writeup"
-                  className="-mx-2 mt-2 block rounded-md px-2 py-1.5 font-mono text-xs uppercase tracking-wide transition-colors hover:bg-white/40"
-                >
-                  Write-up ↗
-                </a>
               </motion.div>
             )}
           </LiquidGlass>
