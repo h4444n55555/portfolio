@@ -32,11 +32,11 @@ const PROJECTS: ProjectEntry[] = [
     title: "Multilingual Sentence Embeddings",
     listTitle: "Multilingual Embeddings",
     tagline: "Evaluating embedding models across languages",
-    period: "2026–present",
+    period: "Jun–Jul 2026",
     problem:
       "Sentence embedding models are trained and judged mostly on high-resource languages, so it's unclear how well they hold up across a diverse set of languages.",
     approach:
-      "A research internship at IIT Ropar, advised by Dr. Loitongbam Gyanendro Singh.\n\nI'm analysing models that embed several languages, and implementing NLP algorithms that evaluate embedding performance across diverse linguistic datasets.",
+      "A research internship at IIT Ropar, advised by Dr. Loitongbam Gyanendro Singh.\n\nI analysed models that embed several languages, and implemented NLP algorithms that evaluate embedding performance across diverse linguistic datasets.",
   },
 ];
 

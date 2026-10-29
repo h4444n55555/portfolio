@@ -108,8 +108,8 @@ const ENTRIES: Record<string, AboutEntry> = {
   "exp-one": {
     id: "exp-one",
     heading: "Research Intern (ML & NLP), IIT Ropar",
-    meta: "June 2026 – Present · Advisor: Dr. Loitongbam Gyanendro Singh",
-    body: "Since June 2026 I've been a research intern in machine learning and NLP at IIT Ropar, advised by Dr. Loitongbam Gyanendro Singh.\n\nThe work is on sentence embeddings: analysing models that embed several languages, and implementing NLP algorithms that evaluate embedding performance across diverse linguistic datasets.",
+    meta: "June – July 2026 · Advisor: Dr. Loitongbam Gyanendro Singh",
+    body: "From June to July 2026 I was a research intern in machine learning and NLP at IIT Ropar, advised by Dr. Loitongbam Gyanendro Singh.\n\nThe work was on sentence embeddings: analysing models that embed several languages, and implementing NLP algorithms that evaluate embedding performance across diverse linguistic datasets.",
   },
   "exp-two": {
     id: "exp-two",
